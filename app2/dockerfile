@@ -1,0 +1,29 @@
+FROM node:8
+
+WORKDIR /usr/src/app2/
+# Install app dependencies
+
+COPY package.json /usr/src/app2/
+COPY package-lock.json /usr/src/app2/
+COPY publisher.js /usr/src/app2/
+COPY subscriber.js /usr/src/app2/
+COPY publisher.ejs /usr/src/app2/views/
+COPY subscriber.ejs /usr/src/app2/views/
+
+RUN npm install
+RUN npm install request-promise 
+RUN npm install request
+RUN npm install express --save
+RUN npm install ejs
+RUN npm install body-parser
+RUN npm install mongodb --save
+RUN npm install websocket
+RUN npm install http
+RUN npm install cors
+# Bundle app source
+COPY . .
+
+EXPOSE 4402
+EXPOSE 4400
+EXPOSE 1337
+CMD [ "npm", "start" ]

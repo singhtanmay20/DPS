@@ -1,0 +1,14 @@
+{
+  "name": "phase2_app",
+  "version": "1.0.0",
+  "description": "Phase2 on Docker",
+  "main": "/usr/src/app1/subscriber.js",
+  "scripts": {
+    "start": "node /usr/src/app1/subscriber.js | node /usr/src/app1/publisher.js"
+  },
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.1",
+    "websocket": "^1.0.28"
+  }
+}

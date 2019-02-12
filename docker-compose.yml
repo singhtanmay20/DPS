@@ -1,0 +1,47 @@
+version: "2"
+services:
+  app1:
+    build:
+      context: app1
+      dockerfile: dockerfile
+    ports:
+      - "5502:5502"
+      - "5500:5500"
+      - "1338:1338"
+    links:
+      - mongo
+      - app2
+    container_name: app1
+    hostname: app1
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+  app2:
+    build:
+      context: app2
+      dockerfile: dockerfile
+    ports: 
+      - "4402:4402"
+      - "4400:4400"
+      - "1337:1337"
+    links:
+      - mongo
+    container_name: app2
+    hostname: app2
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
+    
+  mongo:
+    image: mongo
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.7
+    
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1

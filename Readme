@@ -1,0 +1,30 @@
+
+Readme
+
+#Requirements
+
+docker
+docker compose
+Linux
+
+#usage
+
+first compose the dockerfile using the following command
+sudo docker-compose up --build
+
+The ports allocations are as follows
+subscriber listens on port 5502,4402
+publisher listens on port 5500,4400
+docker is exposed on ports 5502,5500,4400,4402
+
+open a browser on localhost port 4402,5502 for subscriber and 4400,5500 for publishers
+
+publisher
+
+select your publisher and topic --> write the article in the provided textarea --> click submit article to publish.
+
+subscriber
+
+select your subscriber then select the topic that you want to subscribe and click on the subscribe button.
+click on the view subscriptions to view the articles that have been subscribed and published.
+
